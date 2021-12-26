@@ -2,6 +2,8 @@ package urlshort
 
 import (
 	"net/http"
+
+	yaml "gopkg.in/yaml.v2"
 )
 
 func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.HandlerFunc {
@@ -27,7 +29,7 @@ func YAMLHandler(yamlBytes []byte, fallback http.Handler) (http.HandlerFunc, err
 func buildMap(pathUrls []pathUrl) map[string]string {
 	pathsToUrls := make(map[string]string)
 	for _, pu := range pathUrls {
-		pathsToUrls[pu.path] = pu.URL
+		pathsToUrls[pu.Path] = pu.URL
 	}
 	return pathsToUrls
 }
