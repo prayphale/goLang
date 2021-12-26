@@ -22,8 +22,11 @@ func YAMLHandler(yamlBytes []byte, fallback http.Handler) (http.HandlerFunc, err
 	if err != nil {
 		return nil, err
 	}
+	pathsToUrls := make(map[string]string)
+	for _, pu := range pathUrls {
+		pathsToUrls[pu.path] = pu.URL
+	}
 
-	pathsToUrls := map[string]string{}
 	return MapHandler(pathsToUrls, fallback), nil
 }
 
