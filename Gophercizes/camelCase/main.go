@@ -20,9 +20,9 @@ func main() {
 			answer++
 		}
 
-		if ch < 69 && ch > 37 {
-			answer++
-		}
+		// if ch < 69 && ch > 37 {
+		// 	answer++
+		// }
 
 		str := string(ch)
 		if strings.ToUpper(str) == str {
