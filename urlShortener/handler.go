@@ -15,6 +15,19 @@ func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.Handl
 	}
 }
 
-func YAMLHandler(yml []byte, fallback http.Handler) (http.HandlerFunc, error) {
-	return nil, nil
+func YAMLHandler(yamlBytes []byte, fallback http.Handler) (http.HandlerFunc, error) {
+
+	var pathUrls []pathUrl
+	err := yaml.Unmarshal(yamlBytes, &pathUrls)
+	if err != nil {
+		return nil, err
+	}
+
+	pathsToUrls := map[string]string{}
+	return MapHandler(pathsToUrls, fallback), nil
+}
+
+type pathUrl struct {
+	Path string `yaml:"path"`
+	URL  string `yaml: "url"`
 }
