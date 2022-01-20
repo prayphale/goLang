@@ -45,5 +45,5 @@ func parseYaml(data []byte) ([]pathUrl, error) {
 
 type pathUrl struct {
 	Path string `yaml:"path"`
-	URL  string `yaml: "url"`
+	URL  string `yaml:"url"`
 }

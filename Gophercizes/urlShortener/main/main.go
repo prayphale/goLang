@@ -17,17 +17,17 @@ func main() {
 	mapHandler := urlshort.MapHandler(pathsToUrls, mux)
 
 	yaml := `
-- path: /urlshort
-  url: https://github.com/gophercises/urlshort
-- path: /urlshort-final
-  url: https://github.com/gophercises/urlshort/tree/solution
-`
+	- path: /urlshort
+	  url: https://github.com/gophercises/urlshort
+	- path: /urlshort-final
+	  url: https://github.com/gophercises/urlshort/tree/solution
+	`
 	yamlHandler, err := urlshort.YAMLHandler([]byte(yaml), mapHandler)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Start server :8080")
-	http.ListenAndServe(":8080", yamlHandler)
+	fmt.Println("Start server :8081")
+	http.ListenAndServe(":8081", yamlHandler)
 }
 
 func defaultMux() *http.ServeMux {

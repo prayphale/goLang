@@ -43,22 +43,13 @@ quizloop:
 
 		select {
 		case <-timer.C:
-			fmt.Print()
+			fmt.Println()
 			break quizloop
 		case answer := <-answerCh:
 			if answer == p.answer {
 				correctanswers++
 			}
-		default:
-			fmt.Printf("Problem #%d: %s =\n", i+1, p.question)
-			var answers string
-			fmt.Scanf("%s\n", &answers)
-			if answers == p.answer {
-				correctanswers++
-			}
-
 		}
-
 	}
 
 	fmt.Printf("\nScored %d out of %d.\n", correctanswers, len(problems))
