@@ -9,11 +9,14 @@ func main() {
 	var length, delta int
 	var input string
 
-	fmt.Scanf("%d\n", &length, &input, &delta)
+	fmt.Scanf("%d\n", &length)
+	fmt.Scanf("%s\n", &input)
+	fmt.Scanf("%d\n", &delta)
 
-	// var ret []rune
-	// for _, ch := range input {
-	// 	ret = append(ret, cipher(ch, delta))
+	var ret []rune
+	for _, ch := range input {
+		ret = append(ret, cipher(ch, delta))
+	}
 	// switch {
 	// case strings.IndexRune(alphabetLower, ch) >= 0:
 	// 	ret = ret + string(rotate(ch, delta, []rune(alphabetLower)))
@@ -29,8 +32,8 @@ func main() {
 	// 	ret = ret + string(rotate(ch, delta, alphabet))
 	// }
 	// }
-	a := rotateData('Z', 2, "ABC")
-	fmt.Println(string(a))
+	// a := rotateData('Z', 2, 3)
+	fmt.Println(string(ret))
 
 }
 
